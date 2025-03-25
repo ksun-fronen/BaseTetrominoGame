@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetromino</title>
+    <link href="/src/assets/styles/tailwind-program.css?v=2025324111037" rel="stylesheet">
+</head>
+<body>
+<!-- DOM Version -->
+<div id="MainContainerRef" class="p-[10px] w-full h-[100vh] flex items-center justify-center">
+    <div>
+        <div class="flex items-center">
+            <span class="font-bold text-[30px] mr-[20px]">Base Tetromino</span>
+            <div>
+                <a id="StartButton" class="game-ui-button start mr-[10px]">Start</a>
+                <a id="PauseButton" class="game-ui-button disabled pause mr-[10px]">Pause</a>
+                <a id="ResetButton" class="game-ui-button reset mr-[10px]">Reset</a>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="grid-container relative rounded-xl overflow-hidden">
+                <div id="TetrominoGameRef" class="game-panel"></div>
+                <div class="game-over">
+                    <div class="flex items-center justify-center h-full bg-[#000000A0]">
+                        <span class="font-bold text-[40px] text-white">Game Over</span>
+                    </div>
+                </div>
+            </div>
+            <div id="TetrominoPreviewRef" class="ml-[10px]">
+                <span class="font-bold">Next Tetrominoes</span>
+                <div class="game-preview"></div>
+            </div>
+
+            <script type="text/javascript">
+              const panel = document.getElementById("TetrominoGameRef");
+              for (let i = 0; i < 22; i++) {
+                for (let j = 0; j < 16; j++) {
+                  const div = document.createElement("div");
+                  div.setAttribute("row", i);
+                  div.setAttribute("col", j);
+                  /*
+                                div.innerText = "[" + i + "," + j + "]";
+                                div.style.fontSize = '10px';
+                                div.style.textAlign = 'center';
+                                div.style.lineHeight = '20px';
+                  */
+                  panel.appendChild(div);
+                }
+              }
+              const previewPanel = document.getElementById("TetrominoPreviewRef").querySelector(".game-preview");
+              for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 5; j++) {
+                  let node = document.createElement("div");
+                  node.setAttribute("row", i);
+                  node.setAttribute("col", j);
+                  previewPanel.appendChild(node);
+                }
+              }
+            </script>
+        </div>
+    </div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

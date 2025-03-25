@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+:root {
+    --game-panel-color: #f8a7a7;
+    --game-block-color: #8f0e0e;
+}
+
+.game-ui-button.start {
+    --ui-bg-color: #0080ff;
+    --ui-bg-hover-color: #0060ff;
+    --ui-bg-active-color: #0030ff;
+}
+
+.game-ui-button.pause {
+    --ui-bg-color: rgb(199, 20, 20);
+    --ui-bg-hover-color: rgb(153, 15, 15);
+    --ui-bg-active-color: rgb(128, 13, 13);
+}
+
+.game-ui-button.reset {
+    --ui-bg-color: rgb(92, 199, 46);
+    --ui-bg-hover-color: rgb(59, 128, 29);
+    --ui-bg-active-color: rgb(47, 102, 23);
+}
+
+.game-ui-button.disabled {
+    --ui-bg-color: rgb(55, 55, 55);
+    --ui-bg-hover-color: rgb(55, 55, 55);
+    --ui-bg-active-color: rgb(55, 55, 55);
+    color: #999;
+    cursor: not-allowed;
+}
+
+.game-ui-button {
+    @apply inline-block w-[fit-content] rounded-[5px] text-white py-[5px] px-[10px] bg-[var(--ui-bg-color)] select-none cursor-pointer hover:bg-[var(--ui-bg-hover-color)] active:bg-[var(--ui-bg-active-color)] transition-colors
+}
+
+.game-panel {
+    overflow: hidden;
+
+    @apply w-[500px] aspect-[3/4] border-1 border-[red] bg-red-400 rounded-xl;
+    @apply grid grid-cols-16 gap-[1px];
+
+}
+
+.game-panel > div {
+    background: var(--game-panel-color);
+}
+
+
+.game-preview {
+    --size--: 120px;
+    @apply overflow-hidden border-1 border-[red] rounded-[5px] w-[var(--size--)] aspect-[4/3] bg-red-500;
+    @apply grid grid-cols-5 w-[var(--size--)] gap-[1px];
+}
+
+.game-preview > div {
+    @apply bg-[var(--game-panel-color)]
+}
+
+.game-panel > div[value="1"],
+.game-preview > div[value="1"] {
+    background: var(--game-block-color);
+}
+
+.game-panel > div[value="2"],
+.game-preview > div[value="2"] {
+    background: var(--game-block-color);
+}
+
+.game-over {
+    visibility: hidden;
+    @apply absolute w-full h-full top-0 left-0 z-5;
+}
+
+.game-over.show {
+    visibility: visible;
+}
